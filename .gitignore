@@ -4,3 +4,5 @@ src/jspm_packages
 src/assets/css
 
 .idea
+
+.DS_Store
