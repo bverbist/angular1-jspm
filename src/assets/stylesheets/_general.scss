@@ -1,0 +1,11 @@
+app-content {
+    h1.appTitle {
+        span {
+            color: $primary-color;
+        }
+
+        span.emphasys {
+            color: $secondary-color;
+        }
+    }
+}

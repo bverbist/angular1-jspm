@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>ng1-jspm</title>
+</head>
+<body>
+    <div id="ng-app" ng-app="Ng1JspmApp" ng-strict-di="true">
+        <app-content app-title="AngularJS 1.x" emphasys-title="jspm bootstrap sass">
+            Hallo wereld !!
+        </app-content>
+    </div>
+
+    <script src="/jspm_packages/system.js"></script>
+    <script src="/jspm.conf.js"></script>
+    <script>
+        System.import('app/app')
+            .catch(console.error.bind(console));
+    </script>
+</body>
+</html>
