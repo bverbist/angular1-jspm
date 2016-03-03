@@ -33,16 +33,15 @@ Other stuff used:
 
 ### opencultuurdata.nl
 
-[api - searching within a single collection](http://docs.opencultuurdata.nl/user/api.html#searching-within-a-single-collection)
-[api - rest search](http://docs.opencultuurdata.nl/user/api.html#rest-search)
+* [api - searching within a single collection](http://docs.opencultuurdata.nl/user/api.html#searching-within-a-single-collection)
+* [api - rest search](http://docs.opencultuurdata.nl/user/api.html#rest-search)
 
 ### example
 
-[http://api.opencultuurdata.nl/v0/openbeelden/search](http://api.opencultuurdata.nl/v0/openbeelden/search)
-
-POST
-Content-Type: application/x-www-form-urlencoded
-Payload:
+* [http://api.opencultuurdata.nl/v0/openbeelden/search](http://api.opencultuurdata.nl/v0/openbeelden/search)
+* POST
+* Content-Type: application/x-www-form-urlencoded
+* Payload:
 ```shell
 {
   "query": "auto",
