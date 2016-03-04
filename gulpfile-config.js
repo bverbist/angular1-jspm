@@ -6,7 +6,7 @@ export const dirs = {
 };
 
 export const paths = {
-    stylesheets: `${dirs.src}/assets/stylesheets`,  //precessed to css
+    stylesheets: `${dirs.src}/assets/stylesheets`,
     css: `${dirs.src}/assets/css`
 };
 
@@ -26,11 +26,4 @@ export const proxy = {
     options: {
         target: ''
     }
-};
-
-export default {
-    dirs,
-    paths,
-    files,
-    proxy
 };

@@ -1,10 +1,10 @@
 import gulp from 'gulp';
 
-import './gulp-tasks/build.js';
+import {build} from './gulp-tasks/build.js';
 import './gulp-tasks/test.js';
 import './gulp-tasks/dev.js';
 
-gulp.task('default', ['build']);
+gulp.task('default', [build]);
 
 ///**
 // * Create JS production bundle.

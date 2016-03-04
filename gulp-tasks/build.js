@@ -8,20 +8,25 @@ import autoprefixer from 'gulp-autoprefixer';
 
 import {paths, files} from '../gulpfile-config';
 
-gulp.task('build', callback =>
+export const build = 'build';
+export const clean = 'clean';
+export const buildAssets = 'build:assets';
+export const buildAssetsSass = 'build:assets:sass';
+
+gulp.task(build, callback =>
     runSequence(
-        'clean',
-        ['build:assets'],
+        clean,
+        [buildAssets],
         callback)
 );
 
-gulp.task('clean', callback =>
+gulp.task(clean, callback =>
     del(paths.css, callback)
 );
 
-gulp.task('build:assets', ['build:assets:sass']);
+gulp.task(buildAssets, [buildAssetsSass]);
 
-gulp.task('build:assets:sass', () =>
+gulp.task(buildAssetsSass, () =>
     gulp
         .src(files.sass)
         .pipe(plumber())
@@ -33,5 +38,3 @@ gulp.task('build:assets:sass', () =>
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(paths.css))
 );
-
-export default '';

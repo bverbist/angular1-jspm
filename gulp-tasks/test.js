@@ -4,23 +4,29 @@ import eslint from 'gulp-eslint';
 import karma from 'karma';
 
 import {files} from '../gulpfile-config';
+import {build} from './build';
 
-gulp.task('test', callback =>
+export const test = 'test';
+export const jslint = 'jslint';
+export const testUnit = 'test:unit';
+export const ciUnit = 'ci:unit';
+
+gulp.task(test, callback =>
     runSequence(
-        'build',
-        ['eslint'],
-        'test:unit',
+        build,
+        [jslint],
+        testUnit,
         callback)
 );
 
-gulp.task('eslint', () =>
+gulp.task(jslint, () =>
     gulp.src([files.gulp, files.js])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError())
 );
 
-gulp.task('test:unit', callback => {
+gulp.task(testUnit, callback => {
     // remove 'coverage' directory before each test
     //del.sync(path.test.testReports.coverage);
 
@@ -34,7 +40,7 @@ gulp.task('test:unit', callback => {
     server.start();
 });
 
-gulp.task('ci:unit', callback => {
+gulp.task(ciUnit, callback => {
     // remove 'coverage' directory before each test
     //del.sync(path.test.testReports.coverage);
 
@@ -45,5 +51,3 @@ gulp.task('ci:unit', callback => {
     }, callback);
     server.start();
 });
-
-export default '';

@@ -4,23 +4,29 @@ import httpProxy from 'http-proxy-middleware';
 import browserSync from 'browser-sync';
 
 import {dirs, files, proxy} from '../gulpfile-config';
+import {buildAssetsSass} from './build';
+import {test, jslint, testUnit} from './test';
 
 const browserSyncServer = browserSync.create();
 
-gulp.task('dev', callback =>
+export const dev = 'dev';
+export const watch = 'watch';
+export const serve = 'serve';
+
+gulp.task(dev, callback =>
     runSequence(
-        'test',
-        'watch',
-        'serve',
+        test,
+        watch,
+        serve,
         callback)
 );
 
-gulp.task('watch', () => {
-    gulp.watch(files.js, ['eslint', 'test:unit']);
-    gulp.watch(files.sass, ['build:assets:sass']);
+gulp.task(watch, () => {
+    gulp.watch(files.js, [jslint, testUnit]);
+    gulp.watch(files.sass, [buildAssetsSass]);
 });
 
-gulp.task('serve', callback => {
+gulp.task(serve, callback => {
     let options = {
         port: 8000,
         ui: {
@@ -45,5 +51,3 @@ gulp.task('serve', callback => {
         options,
         callback);
 });
-
-export default '';
