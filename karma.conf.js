@@ -32,10 +32,10 @@ module.exports = function (config) {
                 'src/jspm_packages/github/bverbist/bower-angular-ice@0.8.0/angular-ice.unitTester.js',
                 'src/app/app.js',
                 'src/app/**/*.spec.js'
-                //'src/app/**/*.js'
             ],
             serveFiles: [
                 'src/**/!(*.spec).js',
+                'src/**/*.html',
                 'src/**/*.css',
                 'src/**/*.json'
             ],

@@ -1,3 +1,6 @@
+/* eslint quotes: [2, "double"] */
+/* eslint indent: [2, 2] */
+
 System.config({
   baseURL: "/",
   defaultJSExtensions: true,
@@ -19,6 +22,7 @@ System.config({
     "angular-ice": "github:bverbist/bower-angular-ice@0.8.0",
     "angular-mocks": "github:angular/bower-angular-mocks@1.5.0",
     "angular-resource": "github:angular/bower-angular-resource@1.5.0",
+    "angular-ui-router": "github:angular-ui/ui-router@0.2.18",
     "babel": "npm:babel-core@5.8.35",
     "babel-runtime": "npm:babel-runtime@5.8.35",
     "bootstrap": "github:twbs/bootstrap@3.3.6",
@@ -26,6 +30,9 @@ System.config({
     "css": "github:systemjs/plugin-css@0.1.20",
     "json": "github:systemjs/plugin-json@0.1.0",
     "text": "github:systemjs/plugin-text@0.0.7",
+    "github:angular-ui/ui-router@0.2.18": {
+      "angular": "github:angular/bower-angular@1.5.0"
+    },
     "github:angular/bower-angular-mocks@1.5.0": {
       "angular": "github:angular/bower-angular@1.5.0"
     },

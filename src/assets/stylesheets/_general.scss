@@ -1,11 +1,30 @@
 app-content {
-    h1.appTitle {
-        span {
-            color: $primary-color;
-        }
+    app-header {
+        .appTitle {
+            span {
+                color: $primary-color;
+            }
 
-        span.emphasys {
+            span.emphasys {
+                color: $secondary-color;
+            }
+        }
+    }
+
+    h2 {
+        color: darkorange;
+    }
+
+    app-footer {
+        .codedBy {
+            margin: auto;
+            width: 60%;
+
             color: $secondary-color;
+
+            .author {
+                font-weight: bold;
+            }
         }
     }
 }

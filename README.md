@@ -1,7 +1,9 @@
 # Angular 1.x with jspm
 
 Other stuff used:
-* sass (css preprocessor) : node-sass used, so no Ruby install needed 
+* bootstrap
+* sass (css preprocessor) : node-sass used, so no Ruby install needed
+* anguler-ui-router 
 * karma
 * jasmine
 * angular-ice ('iceUnit' test helper for angular code)
@@ -26,8 +28,8 @@ Other stuff used:
 ## To Do's
 
 * jspm bundle build (for production)
-* ui-router
 * use ngForward ?
+* typescript ?
 * optional: refactor angular-ice so that iceUnit can be imported as a module
 
 ## public data api being used
