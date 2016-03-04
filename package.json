@@ -6,6 +6,8 @@
   "license": "ISC",
   "scripts": {
     "setup": "npm install -g jspm && npm install && jspm install",
+    "clean": "gulp clean",
+    "build": "gulp build",
     "test": "gulp test",
     "dev": "gulp dev",
     "serve": "gulp serve"

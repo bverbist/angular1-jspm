@@ -19,13 +19,14 @@ Other stuff used:
 
 ## Dev commands
 
-* npm run test (performs: sass, eslint, karma unit tests)
-* npm run dev (performs: same as 'test' + watch, serve)
+* npm run build (tasks: clean, sass)
+* npm run test (tasks: 'build' tasks + eslint, karma)
+* npm run dev (tasks: 'test' tasks + watch, serve)
 
 ## To Do's
 
-* split gulpfile in separate tasks
 * jspm bundle build (for production)
+* ui-router
 * use ngForward ?
 * optional: refactor angular-ice so that iceUnit can be imported as a module
 
