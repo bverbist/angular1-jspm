@@ -1,12 +1,9 @@
 import HttpConfigBuilder from './http-config-builder-service';
+import settings from '../config/settings';
 
 describe('HttpConfigBuilder:', () => {
 
     let httpConfigBuilder;
-
-    const settings = {
-        REST_TIMEOUT_IN_MILLIS: 45678
-    };
 
     beforeEach(() => {
         httpConfigBuilder = new HttpConfigBuilder(settings);
