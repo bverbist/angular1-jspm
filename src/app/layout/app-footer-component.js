@@ -1,7 +1,17 @@
+import appFooterTemplate from './app-footer.html!text';
+
 class FooterController {
     constructor() {}
 
-    getAuthor() {
+    getCurrentDate() {
+        return new Date();
+    }
+
+    getYear() {
+        return this.getCurrentDate().getFullYear();
+    }
+
+    getCompany() {
         return 'bverbist';
     }
 }
@@ -10,9 +20,5 @@ export default {
     bindings: {},
     controller: FooterController,
     controllerAs: 'footer',
-    template: [
-        '<div class="codedBy">',
-        '--- coded by <span class="author">{{footer.getAuthor()}} ---</span>',
-        '</div>'
-    ].join('')
+    template: appFooterTemplate
 };

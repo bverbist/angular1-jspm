@@ -1,2 +1,22 @@
-$primary-color: darkred;
-$secondary-color: darkgreen;
+$black: #000000;
+$white: #FFFFFF;
+
+$lime: #CDDC39;
+$lime-light: #DCE775;
+$lime-dark: #AFB42B;
+$lime-darkest: #827717;
+$lime-accent: #AEEA00;
+
+$primary-color: $lime;
+$secondary-color: $lime-dark;
+$accent-color: $lime-accent;
+
+$body-color: $lime-darkest;
+
+$header-bg: $lime-darkest;
+$header-color: $white;
+
+$jumbotron-bg: $lime-light;
+
+$button-bg: $accent-color;
+$button-color: $black;
