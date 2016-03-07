@@ -1,9 +1,13 @@
 import angular from 'angular';
-import dataModule from '../data/data-module';
+import resourceModule from '../resource/resource-module';
+import RandomImage from './random-image-service';
+import randomImageComponent from './random-image-component';
 
 const dependencies = [
-    dataModule.name
+    resourceModule.name
 ];
 
 export default angular
-    .module('app.game', dependencies);
+    .module('app.game', dependencies)
+    .service('randomImage', RandomImage)
+    .component('randomImg', randomImageComponent);

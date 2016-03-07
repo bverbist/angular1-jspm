@@ -22,6 +22,14 @@ class HttpConfigBuilder {
         return this;
     }
 
+    withHeader(name, value) {
+        if (typeof this.config.headers === 'undefined') {
+            this.config.headers = {};
+        }
+        this.config.headers[name] = value;
+        return this;
+    }
+
     build() {
         return this.config;
     }

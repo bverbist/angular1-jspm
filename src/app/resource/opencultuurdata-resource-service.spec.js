@@ -5,7 +5,7 @@ describe('opencultuurdataResource:', () => {
 
     beforeEach(() => {
         opencultuurdataResource = iceUnit.builder
-            .service('app.data', 'opencultuurdataResource')
+            .service('app.resource', 'opencultuurdataResource')
             .build();
 
         $httpBackend = iceUnit.inject('$httpBackend');

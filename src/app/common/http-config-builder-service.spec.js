@@ -37,6 +37,23 @@ describe('HttpConfigBuilder:', () => {
 
             expect(actual.responseType).toBe('abc');
         });
+
+        it('withHeader() adds a header to the headers field', () => {
+            const configWithoutHeaders = aHttpConfig.build();
+            expect(configWithoutHeaders.headers).not.toBeDefined();
+
+            const configWithOneHeader = aHttpConfig.withHeader('header-name', 'header-value').build();
+            expect(configWithOneHeader.headers).toBeDefined();
+            expect(configWithOneHeader.headers['header-name']).toBe('header-value');
+
+            const configWithMultipleHeaders = aHttpConfig
+                .withHeader('header-one', 'value-one')
+                .withHeader('header-two', 'value-two')
+                .build();
+            expect(configWithMultipleHeaders.headers).toBeDefined();
+            expect(configWithMultipleHeaders.headers['header-one']).toBe('value-one');
+            expect(configWithMultipleHeaders.headers['header-two']).toBe('value-two');
+        });
     });
 
     it('getHttpConfigDefault() returns an httpConfig object with only the default timeout set', () => {

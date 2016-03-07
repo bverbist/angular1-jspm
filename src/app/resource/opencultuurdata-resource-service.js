@@ -7,17 +7,17 @@ class OpencultuurdataResource {
 
     getOpenBeelden(query) {
         var payload = {
+            query,
             size: 100
         };
-
-        if (typeof query !== 'undefined') {
-            payload.query = query;
-        }
 
         return this.$http.post(
             this.settings.BACKEND_BASE_URL + 'v0/openbeelden/search',
             payload,
-            this.httpConfigBuilder.getHttpConfigForJsonResponse()
+            this.httpConfigBuilder.aHttpConfig()
+                .withResponseType('json')
+                .withHeader('Content-Type', 'application/x-www-form-urlencoded')
+                .build()
         );
     }
 }

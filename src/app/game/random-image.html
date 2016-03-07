@@ -1,0 +1,31 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1>Random Image</h1>
+        <p>
+            <input type="text" ng-model="randonImg.query" class="form-control">
+            <button type="button" class="btn btn-primary" ng-click="randonImg.refreshImage()">
+                refresh
+            </button>
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <uib-alert type="warning"
+               close="randonImg.clearErrorMessage()"
+               ng-show="randonImg.isErrorMessage()">
+        {{randonImg.getErrorMessage()}}
+    </uib-alert>
+
+    <div class="row">
+        <div class="col-md-6">
+            <img ng-src="{{randonImg.image.url}}"/>
+        </div>
+        <div class="col-md-6">
+            <h2 class="imageTitle">{{randonImg.image.title}}</h2>
+            <p class="imageDescription">
+                {{randonImg.image.description}}
+            </p>
+        </div>
+    </div>
+</div>

@@ -9,5 +9,5 @@ const dependencies = [
 ];
 
 export default angular
-    .module('app.data', dependencies)
+    .module('app.resource', dependencies)
     .service('opencultuurdataResource', OpencultuurdataResource);
