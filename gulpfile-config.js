@@ -2,7 +2,7 @@
 
 export const dirs = {
     src: 'src',
-    build: 'build'
+    dist: 'dist'
 };
 
 export const paths = {
@@ -18,7 +18,10 @@ export const files = {
     css: `${paths.css}/*.css`,
     html: `${dirs.src}/**/*.html`,
     gulp: 'gulpfile.babel.js',
-    karmaConf: `${__dirname}/karma.conf.js`
+    karmaConf: `${__dirname}/karma.conf.js`,
+    jsModuleToBundle: `${dirs.src}/app/app.js`,
+    jsBundled: 'app.bundle.js',
+    indexHtml: `${dirs.src}/index.html`
 };
 
 export const proxy = {

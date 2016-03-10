@@ -4,7 +4,7 @@ import eslint from 'gulp-eslint';
 import karma from 'karma';
 
 import {files} from '../gulpfile-config';
-import {build} from './build';
+import {prepare} from './prepare';
 
 export const test = 'test';
 export const jslint = 'jslint';
@@ -13,7 +13,7 @@ export const ciUnit = 'ci:unit';
 
 gulp.task(test, callback =>
     runSequence(
-        build,
+        prepare,
         [jslint],
         testUnit,
         callback)

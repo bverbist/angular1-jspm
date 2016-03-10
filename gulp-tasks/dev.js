@@ -4,7 +4,7 @@ import httpProxy from 'http-proxy-middleware';
 import browserSync from 'browser-sync';
 
 import {dirs, files, proxy} from '../gulpfile-config';
-import {buildAssetsSass} from './build';
+import {prepareAssetsSass} from './prepare';
 import {test, jslint, testUnit} from './test';
 
 const browserSyncServer = browserSync.create();
@@ -23,7 +23,7 @@ gulp.task(dev, callback =>
 
 gulp.task(watch, () => {
     gulp.watch(files.js, [jslint, testUnit]);
-    gulp.watch(files.sass, [buildAssetsSass]);
+    gulp.watch(files.sass, [prepareAssetsSass]);
 });
 
 gulp.task(serve, callback => {

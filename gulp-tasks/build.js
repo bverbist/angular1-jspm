@@ -1,40 +1,46 @@
 import gulp from 'gulp';
 import runSequence from 'run-sequence';
 import del from 'del';
-import plumber from 'gulp-plumber'; //Prevent pipe breaking caused by errors from gulp plugins
 import sourcemaps from 'gulp-sourcemaps';
-import sass from 'gulp-sass';
-import autoprefixer from 'gulp-autoprefixer';
+import jspm from 'gulp-jspm';
+import htmlReplace from 'gulp-html-replace';
 
-import {paths, files} from '../gulpfile-config';
+import {dirs, files} from '../gulpfile-config';
+import {test} from './test';
 
 export const build = 'build';
-export const clean = 'clean';
-export const buildAssets = 'build:assets';
-export const buildAssetsSass = 'build:assets:sass';
+export const cleanDist = 'clean:dist';
+export const bundle = 'bundle';
+export const indexDist = 'indexDist';
 
 gulp.task(build, callback =>
     runSequence(
-        clean,
-        [buildAssets],
+        cleanDist,
+        test,
+        bundle,
+        indexDist,
         callback)
 );
 
-gulp.task(clean, callback =>
-    del(paths.css, callback)
+gulp.task(cleanDist, callback =>
+    del(dirs.dist, callback)
 );
 
-gulp.task(buildAssets, [buildAssetsSass]);
-
-gulp.task(buildAssetsSass, () =>
-    gulp
-        .src(files.sass)
-        .pipe(plumber())
+gulp.task(bundle, () =>
+    gulp.src(files.jsModuleToBundle)
         .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'expanded'
-        }).on('error', sass.logError))
-        .pipe(autoprefixer())
+        .pipe(jspm({
+            selfExecutingBundle: true,
+            minify: true
+        }))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(paths.css))
+        .pipe(gulp.dest(dirs.dist))
+);
+
+gulp.task(indexDist, () =>
+    gulp.src(files.indexHtml)
+        .pipe(htmlReplace({
+            'jsBundle': files.jsBundled
+        }))
+        .pipe(gulp.dest(dirs.dist))
 );

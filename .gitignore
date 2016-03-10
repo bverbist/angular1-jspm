@@ -3,6 +3,9 @@ node_modules
 src/jspm_packages
 src/assets/css
 
+dist
+
 .idea
 
 .DS_Store
+npm-debug.log

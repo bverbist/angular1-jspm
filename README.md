@@ -21,16 +21,27 @@ Other stuff used:
 
 ## Dev commands
 
-* npm run build (tasks: clean, sass)
-* npm run test (tasks: 'build' tasks + eslint, karma)
+* npm run prepare (tasks: clean, sass)
+* npm run test (tasks: 'prepare' tasks + eslint, karma)
 * npm run dev (tasks: 'test' tasks + watch, serve)
+* npm run build (tasks: 'test' tasks + bundle/minify js to dist folder)
 
 ## To Do's
 
-* jspm bundle build (for production)
 * use ngForward ?
 * typescript ?
 * optional: refactor angular-ice so that iceUnit can be imported as a module
+
+## example shim configuration
+
+* reason
+** the package.json of bootstrap-bower was't properly configured for jspm
+** so that jspm doesn't know that it has to load its angular dependency first when doing the sfx bundle
+** can be fixed for your own project by doing an override like this ...
+
+```shell
+jspm install angular-bootstrap=github:angular-ui/bootstrap-bower@~1.2.4 -o "{ registry: 'jspm', main: 'ui-bootstrap-tpls', 'format': 'cjs', dependencies: { angular: '1.5.0' }, shim: { 'ui-bootstrap-tpls': { deps: ['angular'] } } }"
+```
 
 ## public data api being used
 
