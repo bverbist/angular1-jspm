@@ -35,9 +35,9 @@ Other stuff used:
 ## example shim configuration
 
 * reason
-** the package.json of bootstrap-bower was't properly configured for jspm
-** so that jspm doesn't know that it has to load its angular dependency first when doing the sfx bundle
-** can be fixed for your own project by doing an override like this ...
+  * the package.json of bootstrap-bower was't properly configured for jspm
+  * so that jspm doesn't know that it has to load its angular dependency first when doing the sfx bundle
+  * can be fixed for your own project by doing an override like this ...
 
 ```shell
 jspm install angular-bootstrap=github:angular-ui/bootstrap-bower@~1.2.4 -o "{ registry: 'jspm', main: 'ui-bootstrap-tpls', 'format': 'cjs', dependencies: { angular: '1.5.0' }, shim: { 'ui-bootstrap-tpls': { deps: ['angular'] } } }"
