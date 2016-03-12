@@ -1,17 +1,24 @@
 # Angular 1.x with jspm
 
-Other stuff used:
-* bootstrap
-* sass (css preprocessor) : node-sass used, so no Ruby install needed
-* anguler-ui-router 
-* karma
-* jasmine
-* angular-ice ('iceUnit' test helper for angular code)
-* babel transpiling to es5
-* eslint
-* browser-sync
-* gulp tasks (but called from npm scripts)
-* ...
+Example project.
+
+* All js written in es6
+  * modules, classes, etc.
+  * gulp and unit tests also in es6
+* Angular 1.5 components (avoiding regular controllers)
+* Jspm as package manager
+* Other stuff used:
+  * bootstrap
+  * sass (css preprocessor) : node-sass used, so no Ruby install needed
+  * anguler-ui-router 
+  * karma
+  * jasmine
+  * angular-ice ('iceUnit' test helper for angular code)
+  * babel transpiling to es5
+  * eslint
+  * browser-sync
+  * gulp tasks (but called from npm scripts)
+  * ...
 
 ## Dev setup
 
@@ -32,6 +39,7 @@ Other stuff used:
 
 ## To Do's
 
+* ngAnnotate ?
 * use ngForward ?
 * typescript ?
 * optional: refactor angular-ice so that iceUnit can be imported as a module
@@ -59,14 +67,14 @@ jspm install angular-bootstrap=github:angular-ui/bootstrap-bower@~1.2.4 -o "{ re
   * use iceUnit (angular-ice) to reduce the boiler-plate code to inject and mock services/promises/etc.
   * example: opencultuurdata-resource-service.spec.js
 
-## public data api being used
+## public data api used in this example project
 
 ### opencultuurdata.nl
 
 * [api - searching within a single collection](http://docs.opencultuurdata.nl/user/api.html#searching-within-a-single-collection)
 * [api - rest search](http://docs.opencultuurdata.nl/user/api.html#rest-search)
 
-### example
+### openbeelden rest call
 
 * [http://api.opencultuurdata.nl/v0/openbeelden/search](http://api.opencultuurdata.nl/v0/openbeelden/search)
 * POST
