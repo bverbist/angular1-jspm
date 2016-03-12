@@ -33,9 +33,9 @@ class RandomImage {
             function (resolve, reject) {
                 _this.opencultuurdataResource.getOpenBeelden(query)
                     .then(response => {
-                        const size = response.data.hits.hits.length;
+                        const size = response.data.length;
                         const randomNr = _this.getRandomNumberBetween(0, size);
-                        resolve(_this.mapOpenBeeld(response.data.hits.hits[randomNr]));
+                        resolve(_this.mapOpenBeeld(response.data[randomNr]));
                     })
                     .catch(response => {
                         reject(response);

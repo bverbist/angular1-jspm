@@ -1,3 +1,6 @@
+const OPENBEELDEN_DEFAULT_QUERY = 'auto';
+const OPENBEELDEN_DEFAULT_SIZE = 100;
+
 class OpencultuurdataResource {
     constructor($http, settings, httpConfigBuilder) {
         this.$http = $http;
@@ -5,11 +8,12 @@ class OpencultuurdataResource {
         this.httpConfigBuilder = httpConfigBuilder;
     }
 
-    getOpenBeelden(query) {
-        var payload = {
+    getOpenBeelden(query = OPENBEELDEN_DEFAULT_QUERY) {
+        const payload = {
             query,
-            size: 100
+            size: OPENBEELDEN_DEFAULT_SIZE
         };
+        const transformResponseFunction = data => data.hits.hits;
 
         return this.$http.post(
             this.settings.BACKEND_BASE_URL + 'v0/openbeelden/search',
@@ -17,6 +21,7 @@ class OpencultuurdataResource {
             this.httpConfigBuilder.aHttpConfig()
                 .withResponseType('json')
                 .withHeader('Content-Type', 'application/x-www-form-urlencoded')
+                .withTransformResponse(transformResponseFunction)
                 .build()
         );
     }

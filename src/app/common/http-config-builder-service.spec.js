@@ -54,6 +54,16 @@ describe('HttpConfigBuilder:', () => {
             expect(configWithMultipleHeaders.headers['header-one']).toBe('value-one');
             expect(configWithMultipleHeaders.headers['header-two']).toBe('value-two');
         });
+
+        it('withTransformResponse() sets the transformResponse function', () => {
+            const transformResponseFunction = () => 'transformed';
+
+            const actual = aHttpConfig
+                .withTransformResponse(transformResponseFunction)
+                .build();
+
+            expect(actual.transformResponse).toBe(transformResponseFunction);
+        });
     });
 
     it('getHttpConfigDefault() returns an httpConfig object with only the default timeout set', () => {

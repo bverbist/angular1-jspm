@@ -30,6 +30,11 @@ class HttpConfigBuilder {
         return this;
     }
 
+    withTransformResponse(transformResponseFunction) {
+        this.config.transformResponse = transformResponseFunction;
+        return this;
+    }
+
     build() {
         return this.config;
     }
