@@ -21,10 +21,14 @@ Other stuff used:
 
 ## Dev commands
 
-* npm run prepare (tasks: clean, sass)
-* npm run test (tasks: 'prepare' tasks + eslint, karma)
-* npm run dev (tasks: 'test' tasks + watch, serve)
-* npm run build (tasks: 'test' tasks + bundle/minify js to dist folder)
+* npm run prepare
+  * executes tasks: clean, sass
+* npm run test
+  * executes tasks: 'prepare' tasks + eslint, karma
+* npm run dev
+  * executes tasks: 'test' tasks + watch, serve
+* npm run build
+  * executes tasks: 'test' tasks + bundle/minify js to dist folder
 
 ## To Do's
 
@@ -37,11 +41,23 @@ Other stuff used:
 * reason
   * the package.json of bootstrap-bower was't properly configured for jspm
   * so that jspm doesn't know that it has to load its angular dependency first when doing the sfx bundle
-  * can be fixed for your own project by doing an override like this ...
+  * resulted in error "Uncaught ReferenceError: angular is not defined"
+  * also see https://github.com/jspm/jspm-cli/issues/1481
+  * can be fixed for other simular dependency problems by doing an override like this ...
 
 ```shell
 jspm install angular-bootstrap=github:angular-ui/bootstrap-bower@~1.2.4 -o "{ registry: 'jspm', main: 'ui-bootstrap-tpls', 'format': 'cjs', dependencies: { angular: '1.5.0' }, shim: { 'ui-bootstrap-tpls': { deps: ['angular'] } } }"
 ```
+
+## unit tests
+
+* either 'pure' js tests
+  * not closely coupled with angular, but you'll have to provide all the dependencies yourselves
+  * example: http-config-builder-service.spec.js
+* or 'angular' unit tests
+  * let angular give you the class you're going to test and all its dependencies
+  * use iceUnit (angular-ice) to reduce the boiler-plate code to inject and mock services/promises/etc.
+  * example: opencultuurdata-resource-service.spec.js
 
 ## public data api being used
 
