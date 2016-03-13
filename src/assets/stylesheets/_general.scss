@@ -60,16 +60,63 @@ app-content {
         border: 1px solid $lime-darkest;
     }
 
-    .memory-game-image-crop {
-        width: 200px;
-        height: 162px;
-        overflow: hidden;
-        padding: 10px;
+    .strong {
+        font-weight: 700;
     }
 
-    .memory-game-image {
-        width: 200px;
-        height: auto;
+    memory-game {
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: normal;
+        }
+
+        .gameInfo {
+            line-height: 28px;
+        }
+
+        .memoryGame {
+        }
+
+        .memoryCard {
+            min-width: 210px;
+            min-height: 170px;
+        }
+
+        .cardBackside {
+            rect.outer {
+                fill: $lime-darkest;
+            }
+
+            rect.inner {
+                fill: $lime-darkest;
+                stroke: $gray;
+                stroke-width: 4;
+            }
+
+            line {
+                stroke: $gray;
+                stroke-width: 4;
+            }
+
+            text {
+                fill: $gray;
+                font-size: 40px;
+            }
+        }
+
+        .memory-game-image-crop {
+            width: 200px;
+            height: 162px;
+            overflow: hidden;
+        }
+
+        .memory-game-image {
+            width: 200px;
+            height: auto;
+        }
     }
 
     app-footer {

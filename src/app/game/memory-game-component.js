@@ -1,37 +1,28 @@
 import memoryGameTemplate from './memory-game-template.html!text';
-import _ from 'lodash';
+import MemoryGame from './memory-game';
 
 const NO_ERROR_MESSAGE = '';
 
-const toMemoryCard = image => {
-    return {
-        url: image.url
-    };
-};
-
-const getMemoryCards = images => {
-    let memCards = [];
-    for (let image of images) {
-        memCards.push(toMemoryCard(image));
-        memCards.push(toMemoryCard(image));
-    }
-    return _.shuffle(memCards);
-};
-
 class MemoryGameController {
-    constructor(settings, randomImage) {
+    constructor(settings, randomImage, $timeout, $interval) {
         this.settings = settings;
         this.randomImage = randomImage;
+        this.$timeout = $timeout;
+        this.$interval = $interval;
+
+        this.errorMessage = NO_ERROR_MESSAGE;
 
         this.queryPossibilities = settings.MEMORY_QUERY_POSSIBILITIES;
         this.query = this.queryPossibilities[0];
         this.nrOfMemoryPairs = settings.DEFAULT_NR_OF_MEMORY_PAIRS;
         this.nrOfMemoryPairsPossibilities = settings.NR_OF_MEMORY_PAIRS_POSSIBILITIES;
-        this.images;
-        this.memoryCards;
-        this.errorMessage = NO_ERROR_MESSAGE;
+        this.nrOfMemorycardDuplicates = settings.DEFAULT_NR_OF_MEMORYCARD_DUPLICATES;
+        this.nrOfMemorycardDuplicatesPossibilities = settings.NR_OF_MEMORYCARD_DUPLICATES_POSSIBILITIES;
 
-        this.getRandomImages();
+        this.cardWidth = 200;
+        this.cardHeight = 162;
+
+        this.initMemoryGame();
     }
 
     isErrorMessage() {
@@ -46,15 +37,19 @@ class MemoryGameController {
         this.errorMessage = NO_ERROR_MESSAGE;
     }
 
-    getRandomImages() {
+    initMemoryGame() {
         let _this = this;
         this.randomImage.getRandomImages(this.query, this.nrOfMemoryPairs)
             .then(images => {
-                _this.images = images;
-
                 _this.clearErrorMessage();
 
-                _this.memoryCards = getMemoryCards(_this.images);
+                _this.memoryGame = new MemoryGame(
+                    images,
+                    _this.nrOfMemorycardDuplicates,
+                    _this.$timeout,
+                    _this.settings.TIMEOUT_WRONGLY_MATCHED_CARDS_SHOWN_IN_MILLIS,
+                    _this.$interval
+                );
             })
             .catch(response => {
                 _this.errorMessage = 'Unexpected error: ' + response.statusText + ' [' + response.status + ']';
@@ -62,11 +57,11 @@ class MemoryGameController {
     }
 
     restartGame() {
-        this.getRandomImages();
+        this.initMemoryGame();
     }
 }
 
-MemoryGameController.$inject = ['settings', 'randomImage'];
+MemoryGameController.$inject = ['settings', 'randomImage', '$timeout', '$interval'];
 
 export default {
     bindings: {},

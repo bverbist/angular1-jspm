@@ -1,13 +1,30 @@
 <div class="jumbotron">
     <div class="container">
         <h1>Memory Game</h1>
-        <p>
+        <div class="col-lg-6 col-md-6 col-xs-12 gameInfo">
+            <label>subject</label>
             <select ng-options="query for query in $ctrl.queryPossibilities" ng-model="$ctrl.query" class="form-control"></select>
+
+            <label>#images</label>
             <select ng-options="nrOfMemoryPairs for nrOfMemoryPairs in $ctrl.nrOfMemoryPairsPossibilities" ng-model="$ctrl.nrOfMemoryPairs" class="form-control"></select>
+
+            <label>#duplicates</label>
+            <select ng-options="nrOfMemorycardDuplicates for nrOfMemorycardDuplicates in $ctrl.nrOfMemorycardDuplicatesPossibilities" ng-model="$ctrl.nrOfMemorycardDuplicates" class="form-control"></select>
+
             <button type="button" class="btn btn-primary" ng-click="$ctrl.restartGame()">
                 restart
             </button>
-        </p>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12 gameInfo">
+            <label>progress</label>
+            <span class="strong">{{$ctrl.memoryGame.getProgress()}}</span>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs-12 gameInfo">
+            <div ng-show="$ctrl.memoryGame.started">
+                <label>time</label>
+                <span class="strong">{{$ctrl.memoryGame.duration}}s</span>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -18,11 +35,44 @@
         {{$ctrl.getErrorMessage()}}
     </uib-alert>
 
-    <div class="row">
-        <div ng-repeat="memoryCard in $ctrl.memoryCards" class="col-lg-3 col-md-4 col-xs-6">
-            <div class="memory-game-image-crop">
-                <img class="memory-game-image" ng-src="{{memoryCard.url}}">
+    <div class="row memoryGame">
+        <div ng-repeat="memoryCard in $ctrl.memoryGame.memoryCards" class="col-lg-3 col-md-4 col-xs-6 memoryCard">
+            <svg ng-attr-width="{{$ctrl.cardWidth}}"
+                 ng-attr-height="{{$ctrl.cardHeight}}"
+                 class="cardBackside"
+                 ng-hide="memoryCard.isTurned()"
+                 ng-click="$ctrl.memoryGame.turnCard($index)">
+                <rect class="outer"
+                      ng-attr-width="{{$ctrl.cardWidth}}"
+                      ng-attr-height="{{$ctrl.cardHeight}}"
+                      x="0"
+                      y="0"
+                      rx="0"
+                      ry="0">
+                </rect>
+                <rect class="inner"
+                      ng-attr-width="{{80}}"
+                      ng-attr-height="{{80}}"
+                      ng-attr-x="{{($ctrl.cardWidth / 2) - 40}}"
+                      ng-attr-y="{{($ctrl.cardHeight / 2) - 40}}"
+                      rx="20"
+                      ry="20">
+                </rect>
+                <text ng-attr-x="{{($ctrl.cardWidth / 2) - 16}}"
+                      ng-attr-y="{{($ctrl.cardHeight / 2) + 9}}">
+                    m
+                </text>
+            </svg>
+            <div class="memory-game-image-crop"
+                 ng-show="memoryCard.isTurned()">
+                <img class="memory-game-image" ng-src="{{memoryCard.imageUrl}}">
             </div>
+        </div>
+        <div class="col-md-6">
+            <h2 class="imageTitle">{{$ctrl.memoryGame.lastTurnedCardInfo.imageTitle}}</h2>
+            <p class="imageDescription">
+                {{$ctrl.memoryGame.lastTurnedCardInfo.imageDescription}}
+            </p>
         </div>
     </div>
 </div>
