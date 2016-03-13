@@ -2,9 +2,9 @@
     <div class="container">
         <h1>Memory Game</h1>
         <p>
-            <select ng-options="query for query in memGame.queryPossibilities" ng-model="memGame.query" class="form-control"></select>
-            <select ng-options="nrOfMemoryPairs for nrOfMemoryPairs in memGame.nrOfMemoryPairsPossibilities" ng-model="memGame.nrOfMemoryPairs" class="form-control"></select>
-            <button type="button" class="btn btn-primary" ng-click="memGame.restartGame()">
+            <select ng-options="query for query in $ctrl.queryPossibilities" ng-model="$ctrl.query" class="form-control"></select>
+            <select ng-options="nrOfMemoryPairs for nrOfMemoryPairs in $ctrl.nrOfMemoryPairsPossibilities" ng-model="$ctrl.nrOfMemoryPairs" class="form-control"></select>
+            <button type="button" class="btn btn-primary" ng-click="$ctrl.restartGame()">
                 restart
             </button>
         </p>
@@ -13,13 +13,13 @@
 
 <div class="container">
     <uib-alert type="warning"
-               close="memGame.clearErrorMessage()"
-               ng-show="memGame.isErrorMessage()">
-        {{memGame.getErrorMessage()}}
+               close="$ctrl.clearErrorMessage()"
+               ng-show="$ctrl.isErrorMessage()">
+        {{$ctrl.getErrorMessage()}}
     </uib-alert>
 
     <div class="row">
-        <div ng-repeat="memoryCard in memGame.memoryCards" class="col-lg-3 col-md-4 col-xs-6">
+        <div ng-repeat="memoryCard in $ctrl.memoryCards" class="col-lg-3 col-md-4 col-xs-6">
             <div class="memory-game-image-crop">
                 <img class="memory-game-image" ng-src="{{memoryCard.url}}">
             </div>

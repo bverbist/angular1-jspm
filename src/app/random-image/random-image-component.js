@@ -54,6 +54,5 @@ RandomImageController.$inject = ['settings', 'randomImage', '$scope'];
 export default {
     bindings: {},
     controller: RandomImageController,
-    controllerAs: 'randonImg',
     template: randomImageTemplate
 };

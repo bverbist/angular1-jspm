@@ -71,6 +71,5 @@ MemoryGameController.$inject = ['settings', 'randomImage'];
 export default {
     bindings: {},
     controller: MemoryGameController,
-    controllerAs: 'memGame',
     template: memoryGameTemplate
 };
