@@ -6,7 +6,12 @@ const settings = {
         3,
         4,
         6,
-        10
+        8
+    ],
+    MEMORY_QUERY_POSSIBILITIES: [
+        'auto',
+        'fiets',
+        'oorlog'
     ]
 };
 

@@ -13,6 +13,11 @@ function configureRouter($stateProvider, $urlRouterProvider) {
         .state('main.game', {
             url: '/game',
             template: gameTemplate
+        })
+
+        .state('main.randomImage', {
+            url: '/randomImage',
+            template: '<random-img></random-img>'
         });
 }
 

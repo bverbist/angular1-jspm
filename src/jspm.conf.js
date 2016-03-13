@@ -30,6 +30,7 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "json": "github:systemjs/plugin-json@0.1.0",
+    "lodash": "github:lodash/lodash@4.6.1",
     "text": "github:systemjs/plugin-text@0.0.7",
     "github:angular-ui/bootstrap-bower@1.2.4": {
       "angular": "github:angular/bower-angular@1.5.0"

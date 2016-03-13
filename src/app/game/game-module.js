@@ -1,13 +1,11 @@
 import angular from 'angular';
-import resourceModule from '../resource/resource-module';
-import RandomImage from './random-image-service';
-import randomImageComponent from './random-image-component';
+import randomImageModule from '../random-image/random-image-module';
+import memoryGameComponent from './memory-game-component';
 
 const dependencies = [
-    resourceModule.name
+    randomImageModule.name
 ];
 
 export default angular
     .module('app.game', dependencies)
-    .service('randomImage', RandomImage)
-    .component('randomImg', randomImageComponent);
+    .component('memoryGame', memoryGameComponent);

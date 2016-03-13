@@ -7,6 +7,13 @@ app-content {
             background-color: $header-bg;
             color: $header-color;
 
+            a.navbar-brand {
+                color: $lime-light;
+            }
+            a.navbar-brand.active {
+                color: $white;
+            }
+
             span.appTitle {
                 color: $white;
             }
@@ -51,6 +58,18 @@ app-content {
         color: $lime-darkest;
         background-color: $white;
         border: 1px solid $lime-darkest;
+    }
+
+    .memory-game-image-crop {
+        width: 200px;
+        height: 162px;
+        overflow: hidden;
+        padding: 10px;
+    }
+
+    .memory-game-image {
+        width: 200px;
+        height: auto;
     }
 
     app-footer {

@@ -18,6 +18,7 @@ Example project.
   * eslint
   * browser-sync
   * gulp tasks (but called from npm scripts)
+  * lodash
   * ...
 
 ## Dev setup
