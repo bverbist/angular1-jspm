@@ -1,4 +1,4 @@
-import memoryGameTemplate from './memory-game.html!text';
+import memoryGameTemplate from './memory-game-template.html!text';
 import _ from 'lodash';
 
 const NO_ERROR_MESSAGE = '';

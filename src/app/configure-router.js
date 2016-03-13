@@ -1,5 +1,4 @@
 import mainLayoutTemplate from './layout/main-layout.html!text';
-import gameTemplate from './game/game.html!text';
 
 function configureRouter($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/game');
@@ -12,7 +11,7 @@ function configureRouter($stateProvider, $urlRouterProvider) {
 
         .state('main.game', {
             url: '/game',
-            template: gameTemplate
+            template: '<memory-game></memory-game>'
         })
 
         .state('main.randomImage', {

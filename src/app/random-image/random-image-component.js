@@ -1,4 +1,4 @@
-import randomImageTemplate from './random-image.html!text';
+import randomImageTemplate from './random-image-template.html!text';
 
 const NO_ERROR_MESSAGE = '';
 const DEFAULT_QUERY = 'auto';

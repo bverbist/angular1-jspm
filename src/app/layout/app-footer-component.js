@@ -1,4 +1,4 @@
-import appFooterTemplate from './app-footer.html!text';
+import appFooterTemplate from './app-footer-template.html!text';
 
 class FooterController {
     constructor() {}
