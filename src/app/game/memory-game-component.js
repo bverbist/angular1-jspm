@@ -4,11 +4,12 @@ import MemoryGame from './memory-game';
 const NO_ERROR_MESSAGE = '';
 
 class MemoryGameController {
-    constructor(settings, randomImage, $timeout, $interval) {
+    constructor(settings, randomImage, $timeout, $interval, $window) {
         this.settings = settings;
         this.randomImage = randomImage;
         this.$timeout = $timeout;
         this.$interval = $interval;
+        this.localStorage = $window.localStorage;
 
         this.errorMessage = NO_ERROR_MESSAGE;
 
@@ -48,7 +49,8 @@ class MemoryGameController {
                     _this.nrOfMemorycardDuplicates,
                     _this.$timeout,
                     _this.settings.TIMEOUT_WRONGLY_MATCHED_CARDS_SHOWN_IN_MILLIS,
-                    _this.$interval
+                    _this.$interval,
+                    _this.localStorage
                 );
             })
             .catch(response => {
@@ -61,7 +63,7 @@ class MemoryGameController {
     }
 }
 
-MemoryGameController.$inject = ['settings', 'randomImage', '$timeout', '$interval'];
+MemoryGameController.$inject = ['settings', 'randomImage', '$timeout', '$interval', '$window'];
 
 export default {
     bindings: {},

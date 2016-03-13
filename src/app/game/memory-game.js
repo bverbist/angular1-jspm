@@ -3,6 +3,9 @@ import _ from 'lodash';
 
 const INTERVAL_SECOND_IN_MILLIS = 1000;
 const NO_LAST_TURNED_CARD_INFO = {};
+const NO_BEST_TIME = '...';
+const BEST_TIMES_STORAGE_KEY_PREFIX = 'BEST_TIMES_';
+
 let cardId = 0;
 
 const toMemoryCard = image => {
@@ -30,12 +33,13 @@ const isTurnedAndNotMatched = card => card.isTurnedAndNotMatched();
 const isMatched = card => card.isMatched();
 
 class MemoryGame {
-    constructor(images, duplicationNr, $timeout, timeoutWronglyMatchedCardsShownInMillis, $interval) {
+    constructor(images, duplicationNr, $timeout, timeoutWronglyMatchedCardsShownInMillis, $interval, localStorage) {
         this.memoryCards = getMemoryCards(images, duplicationNr);
         this.duplicationNr = duplicationNr;
         this.$timeout = $timeout;
         this.timeoutWronglyMatchedCardsShownInMillis = timeoutWronglyMatchedCardsShownInMillis;
         this.$interval = $interval;
+        this.localStorage = localStorage;
 
         this.lastTurnedCardInfo = NO_LAST_TURNED_CARD_INFO;
 
@@ -78,6 +82,14 @@ class MemoryGame {
         return this.getNrOfMatchedPairs() === this.getNrOfTotalPairs();
     }
 
+    stopGameIfSolved() {
+        if (this.isSolved()) {
+            this.$interval.cancel(this.timerPromise);
+
+            this.setBestTimeForCurrentDifficulty();
+        }
+    }
+
     matchTurnedCards() {
         if (!this.isMaxNrOfCardsTurned()) {
             return;
@@ -93,9 +105,7 @@ class MemoryGame {
         } else {
             turnedCards.forEach(card => card.setMatched());
 
-            if (this.isSolved()) {
-                this.$interval.cancel(this.timerPromise);
-            }
+            this.stopGameIfSolved();
         }
     }
 
@@ -115,6 +125,29 @@ class MemoryGame {
 
     getProgress() {
         return this.getNrOfMatchedPairs() + ' / ' + this.getNrOfTotalPairs();
+    }
+
+    getCurrentDifficulty() {
+        return this.getNrOfTotalPairs() + '_' + this.duplicationNr;
+    }
+
+    getStorageKeyForCurrentDifficulty() {
+        return BEST_TIMES_STORAGE_KEY_PREFIX + this.getCurrentDifficulty();
+    }
+
+    getBestTimeForCurrentDifficulty() {
+        const bestTime = this.localStorage.getItem(this.getStorageKeyForCurrentDifficulty());
+        if (bestTime === null) {
+            return NO_BEST_TIME;
+        }
+        return bestTime;
+    }
+
+    setBestTimeForCurrentDifficulty() {
+        const bestTime = this.getBestTimeForCurrentDifficulty();
+        if (bestTime === NO_BEST_TIME || bestTime > this.duration) {
+            this.localStorage.setItem(this.getStorageKeyForCurrentDifficulty(), this.duration);
+        }
     }
 }
 

@@ -77,6 +77,21 @@ app-content {
             line-height: 28px;
         }
 
+        .durationBlock {
+            padding-top: 30px;
+        }
+
+        @media (max-width: 991px) {
+            .durationBlock {
+                padding-top: inherit;
+            }
+        }
+
+        .duration {
+            color: $secondary-color;
+            font-size: 40px;
+        }
+
         .memoryGame {
         }
 
