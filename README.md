@@ -10,7 +10,7 @@ Example project.
 * Other stuff used:
   * bootstrap
   * sass (css preprocessor) : node-sass used, so no Ruby install needed
-  * anguler-ui-router 
+  * angular-ui-router 
   * karma
   * jasmine
   * angular-ice ('iceUnit' test helper for angular code)
